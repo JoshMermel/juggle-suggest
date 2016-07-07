@@ -16,6 +16,7 @@ do for it which I've details below in rough priority order.
   - user configurable length?
 - Show number of balls being juggled
 - Better error messages explaining why a pattern is invalid
+- Show the transition into and out of the pattern from ground state
 
 
 ## v2 - bugs
