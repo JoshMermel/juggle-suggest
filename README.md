@@ -33,6 +33,5 @@ do for it which I've details below in rough priority order.
 ## v3 (maybe someday)
 - Sync
 - Better animation of stacked muliplexes like [33] see http://i.imgur.com/TPZdF74.gif
-- Balls should move at constant horizontal velocity?
 - replace vanilla/mutiplex toggle with a silder of max number of balls allowed
   to be thrown at once
