@@ -147,6 +147,17 @@ function MinSuffixLen(prefix) {
   return len;
 }
 
+// Takes a siteswap prefix in int list list form
+// Returns the length of the shortest suffix
+// No promises on whether or not the suffix will be vanilla.
+function MinVanillaSuffixLen(prefix) {
+  var len = 0;
+  while (!ExistsVanillaSuffix(prefix, len)) {
+    len++;
+  }
+  return len;
+}
+
 // prefix is in int list list form
 // len is an int
 function GetSuffix(prefix, len) {
@@ -223,6 +234,34 @@ function GetMinSuffix(prefix) {
   return GetSuffix(prefix, MinSuffixLen(prefix));
 }
 
+// takes a prefix in int list list form
+function GetMinVanillaSuffix(prefix) {
+  return GetSuffix(prefix, MinVanillaSuffixLen(prefix));
+}
+
+// function UpdateSuggestion(prefix) {
+//   // empty input
+//   if (!prefix) {
+//     suggestbox.options = ["531"];
+//     suggestbox.repaint();
+//     return;
+//   }
+//   
+//   ss_input = toSiteswap(prefix);
+//   if (ExistsAnySuffix(ss_input)) {
+//     ss_min_suffix = GetMinSuffix(ss_input);
+//     str_min_suffix = SSToString(ss_min_suffix);
+//     
+//     suggestbox.options = [prefix + str_min_suffix];
+//     suggestbox.repaint();
+//     $('#error').slideUp();
+//     return;
+//   } else {
+//     $('#error span').text('No valid suffixes exist');
+//     $('#error').slideDown();
+//   }
+// }
+
 function UpdateSuggestion(prefix) {
   // empty input
   if (!prefix) {
@@ -232,16 +271,34 @@ function UpdateSuggestion(prefix) {
   }
   
   ss_input = toSiteswap(prefix);
-  if (ExistsAnySuffix(ss_input)) {
-    ss_min_suffix = GetMinSuffix(ss_input);
-    str_min_suffix = SSToString(ss_min_suffix);
-    
-    suggestbox.options = [prefix + str_min_suffix];
-    suggestbox.repaint();
-    $('#error').slideUp();
-    return;
+
+  if (document.getElementById("vanilla").checked) {
+    if (ExistsAnyVanillaSuffix(ss_input)) { //
+      ss_min_suffix = GetMinVanillaSuffix(ss_input);
+      str_min_suffix = SSToString(ss_min_suffix);
+
+      suggestbox.options = [prefix + str_min_suffix];
+      suggestbox.repaint();
+      $('#error').slideUp();
+      return;
+    } else {
+      $('#error span').text('No valid suffixes exist');
+      $('#error').slideDown();
+    }
+  } else if (document.getElementById("multiplex").checked) {
+    if (ExistsAnySuffix(ss_input)) {
+      ss_min_suffix = GetMinSuffix(ss_input);
+      str_min_suffix = SSToString(ss_min_suffix);
+
+      suggestbox.options = [prefix + str_min_suffix];
+      suggestbox.repaint();
+      $('#error').slideUp();
+      return;
+    } else {
+      $('#error span').text('No valid suffixes exist');
+      $('#error').slideDown();
+    }
   } else {
-    $('#error span').text('No valid suffixes exist');
-    $('#error').slideDown();
+    console.log("wtf");
   }
 }

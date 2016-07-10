@@ -8,7 +8,6 @@ do for it which I've details below in rough priority order.
 
 ## v2 - features
 - Colored balls - consider http://stackoverflow.com/questions/6921792/how-to-draw-circle-in-html-page
-- Multiplex/vanilla toggle for completions
 - Some kind of user guide
 - Possibly offer more completions
   - fewest balls added?
