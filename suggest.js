@@ -98,6 +98,7 @@ function ExistsSuffix(prefix, len) {
 }
 
 function ExistsVanillaSuffix(prefix, len) {
+  console.log(len);
   // determine the drop sites of all throws
   var countdown = [];
   for (i = 0; i < prefix.length; i++) {
@@ -133,7 +134,12 @@ function ExistsAnySuffix(prefix) {
 }
 
 function ExistsAnyVanillaSuffix(prefix) {
-  return ExistsVanillaSuffix(prefix, prefix.length + 35);
+  for (var i = 0; i < 35; i++) {
+    if (ExistsVanillaSuffix(prefix, i)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 // Takes a siteswap prefix in int list list form
@@ -238,29 +244,6 @@ function GetMinSuffix(prefix) {
 function GetMinVanillaSuffix(prefix) {
   return GetSuffix(prefix, MinVanillaSuffixLen(prefix));
 }
-
-// function UpdateSuggestion(prefix) {
-//   // empty input
-//   if (!prefix) {
-//     suggestbox.options = ["531"];
-//     suggestbox.repaint();
-//     return;
-//   }
-//   
-//   ss_input = toSiteswap(prefix);
-//   if (ExistsAnySuffix(ss_input)) {
-//     ss_min_suffix = GetMinSuffix(ss_input);
-//     str_min_suffix = SSToString(ss_min_suffix);
-//     
-//     suggestbox.options = [prefix + str_min_suffix];
-//     suggestbox.repaint();
-//     $('#error').slideUp();
-//     return;
-//   } else {
-//     $('#error span').text('No valid suffixes exist');
-//     $('#error').slideDown();
-//   }
-// }
 
 function UpdateSuggestion(prefix) {
   // empty input
