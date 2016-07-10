@@ -271,3 +271,4 @@ function getThrowCoord (step, cStep, T, startx, starty, endx, endy, height) {
 	pos[1] = y;
 	return pos;
 }
+

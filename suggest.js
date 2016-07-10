@@ -133,6 +133,10 @@ function ExistsAnySuffix(prefix) {
   return ExistsSuffix(prefix, prefix.length + 35);
 }
 
+// THIS IS VERY BAD
+// this is super inefficient but works. Idea for optimizing this - build the
+// countdown list assuming +35 length, find the occurence of the first
+// multiplex, run this loop up to that point.
 function ExistsAnyVanillaSuffix(prefix) {
   for (var i = 0; i < 35; i++) {
     if (ExistsVanillaSuffix(prefix, i)) {
