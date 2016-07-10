@@ -32,7 +32,7 @@
               <hr/>
 
               <span> Animation speed </span>
-              <input id="animation_speed" type="text" data-slider-min="5" data-slider-max="25" data-slider-step="1" data-slider-value="3"/>
+              <input id="animation_speed" type="text" data-slider-min="1" data-slider-max="30" data-slider-step="1" data-slider-value="3"/>
 
               <hr/>
 
@@ -83,9 +83,9 @@
           var txt = suggestbox.getText();
           Update(txt);
         });
-        $("#animation_speed").slider({value: 15});
+        $("#animation_speed").slider({value: 20});
         $("#animation_speed").on("change", function(slideEvt) {
-          var new_speed = ((30 - slideEvt.value.newValue) * 2 / 3);
+          var new_speed = ((30 - slideEvt.value.newValue));
           sswani.stopAnimation();
           sswani.speed = new_speed;
           sswani.startAnimation();
