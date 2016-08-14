@@ -19,7 +19,9 @@ html, body, .container, .row {
   margin-left: auto;
   margin-right: auto;
 }
-
+.slider-horizontal{
+   margin-left: 15px;
+}
 svg {
 	border: solid 1px #eeeeee;
 	width: 100%;
